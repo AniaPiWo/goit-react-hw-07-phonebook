@@ -8,8 +8,20 @@
 .item {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 5px;
+}
+
+.name_box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.name {
+  font-weight: 700;
 }
 
 .deleteBtn {
