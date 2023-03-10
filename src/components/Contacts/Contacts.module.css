@@ -14,7 +14,7 @@
   padding-bottom: 5px;
 }
 
-.name_box {
+.nameBox {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -41,10 +41,9 @@
   color: white;
 }
 
-@media only screen and (max-width: 767px) {
-  .name_box {
+@media screen and (max-width: 767px) {
+  .nameBox {
     display: flex;
-    align-items: flex-start;
     gap: 5px;
   }
 

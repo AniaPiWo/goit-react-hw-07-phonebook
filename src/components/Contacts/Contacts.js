@@ -21,7 +21,7 @@ export const Contacts = () => {
     <ul className={css.list}>
       {visibleNames.map(contact => (
         <li className={css.item} key={contact.id}>
-          <div className={css.name_box}>
+          <div className={css.nameBox}>
             <span className={css.name}>{contact.name}</span>{' '}
             <span>{contact.phone}</span>
           </div>
