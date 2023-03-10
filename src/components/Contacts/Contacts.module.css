@@ -40,3 +40,20 @@
   border: 1px solid white;
   color: white;
 }
+
+@media only screen and (max-width: 767px) {
+  .name_box {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .item {
+    flex-direction: column;
+  }
+
+  .deleteBtn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
