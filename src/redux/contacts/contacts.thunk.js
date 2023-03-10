@@ -4,31 +4,47 @@ import { getContacts } from 'components/api';
 export const fetchContactsThunk = createAsyncThunk(
   'contacts/getContacts',
   async (arg, thunkAPI) => {
+    console.log('thunkAPI:', thunkAPI);
     try {
       const response = await getContacts(false);
-      const { contacts } = response;
-      console.log(contacts);
+
+      //console.log(contacts);
       return response.contacts;
     } catch (e) {
       throw new Error('Cant fetch contacts!');
-      return thunkAPI.rejectWithValue('There was a problem while fetching');
     }
   }
 );
 
 export const deleteSelectedContact = createAsyncThunk(
-  'contacts/addContact',
-  async (id, thunkAPI) => {
+  'contacts/deleteContact',
+  async (id, { rejectWithValue }) => {
     try {
       const response = await deleteSelectedContact(id);
-      return response;
+
+      return id;
     } catch (e) {
-      throw new Error('Cant add contact!');
-      //return rejectWithValue('There was a problem while deleting task');
+      return rejectWithValue(e);
     }
   }
 );
 
+export const addNewContact = createAsyncThunk(
+  'contacts/addContact',
+  async ({ id, name, phone }, { rejectWithValue }) => {
+    try {
+      const response = await addNewContact({ id, name, phone });
+
+      return {
+        id,
+        name,
+        phone,
+      };
+    } catch (e) {
+      return rejectWithValue(e);
+    }
+  }
+);
 //to test getContactsFail => getContacts(true);
 
 // msg to mentor - below is other ver of code for learning purposes only, pls ignore it :]

@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContactAction } from 'redux/contacts/contacts.slice';
+import { addNewContact } from 'redux/contacts/contacts.thunk';
 import css from './Form.module.css';
+import { selectContactsList } from 'redux/selectors';
 
 export const Form = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(store => store.contacts);
+  const contacts = useSelector(selectContactsList);
 
   const onSubmit = event => {
     event.preventDefault();
@@ -12,7 +13,9 @@ export const Form = () => {
     const latestId = Math.max(...contacts.map(contact => contact.id));
     const nameValue = form.elements.text.value;
     const phoneValue = form.elements.phone.value;
-    dispatch(addContactAction(latestId + 1, nameValue, phoneValue));
+    dispatch(
+      addNewContact({ id: latestId + 1, name: nameValue, phone: phoneValue })
+    );
     form.reset();
   };
 
